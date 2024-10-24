@@ -28,9 +28,32 @@ function displayNumbers(ul, list) {
     }
 }
 
+function removeElement(el){
+
+    el.classList.add("d-none");
+
+}
+
+function changeText(text){
+    text.innerHTML="Inserisci ora i numeri che ricordi (non è importante l'ordine)";
+}
+
+function displayForm(){
+    answerForm.classList.remove("d-none");
+}
+
+
+
 numbers = generateNumbers(numbers);
 displayNumbers(numberList, numbers);
 
 const timeRemain=setInterval(countdownFunction, 1000);
 
+setTimeout( function (){
+    clearInterval(timeRemain);
 
+    removeElement(countdown);
+    removeElement(numberList);
+    changeText(instructions);
+    displayForm();
+}, (timer+2)*1000)
